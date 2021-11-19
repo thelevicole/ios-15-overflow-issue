@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>iOS 15 Overflow Issue</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+	<style>
+		.modal.with-safe-area {
+			padding-top: env(safe-area-inset-top, 0px);
+			padding-bottom: env(safe-area-inset-bottom, 0px);
+		}
+	</style>
+</head>
+<body class="bg-light">
+
+	<div class="container my-5	">
+		<div class="p-5 bg-white">
+
+			<h1>iOS 15 Overflow Issue Example</h1>
+
+			<hr>
+
+			<p>iOS 15 appears to have an issue with overflowing when the Tab Bar is positioned at the top instead of the&mdash;new default&mdash;bottom.</p>
+
+			<p><strong>Steps to reproduce:</strong></p>
+			<ol>
+				<li>Set the Tab Bar position to the top by tap the <code>A<span class="fs-5">A</span></code> icon and selecting <code>Show Top Address Bar</code>.</li>
+				<li>Open the modal by scrolling down this page and tapping <code>Open modal</code>.</li>
+				<li>Scroll down to the bottom of the modal which will hide Safaris UI.</li>
+				<li>Try clicking the <code>Close</code> button.</li>
+			</ol>
+			
+			<p>You should find that Safari fights with your interaction, showing the bottom bar making it impossible to interact with the close button.</p>
+
+			<p>This issue doesn't seem to happen when the Tab Bar is positioned at the bottom of the screen.</p>
+
+			<hr>
+
+			<p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sodales nibh ultrices felis egestas, sed vulputate ligula ullamcorper. Pellentesque faucibus commodo quam auctor aliquet. Cras tempus pretium porttitor. Cras tempus enim sapien, quis molestie enim posuere eget. Fusce porttitor turpis ut enim accumsan, eget sodales est sagittis. Aliquam nec sagittis ligula. Fusce mattis, sapien a varius congue, odio massa pretium orci, in pulvinar risus lorem vitae felis.</p>
+
+			<p class="text-muted">Mauris tellus magna, finibus eget elementum non, commodo vel turpis. Duis feugiat neque quis nisi faucibus vulputate. Vestibulum in lobortis urna, sed pharetra justo. Praesent auctor nisi faucibus, pretium tortor et, faucibus libero. Donec rutrum egestas lorem, egestas pharetra odio commodo non. Mauris scelerisque facilisis est at euismod. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Quisque nec elit in enim aliquam consectetur. Mauris rhoncus felis non erat convallis, quis sodales elit maximus. Nunc tempus blandit consequat. Donec tincidunt fermentum massa vitae pharetra. Ut ac risus eu diam ullamcorper porta sit amet at tellus. Aenean pretium, orci et porttitor pretium, sem massa lacinia arcu, ut porttitor justo neque at felis. Nunc id purus vel lectus ultrices blandit. In mattis volutpat lectus, vel tempus diam sagittis sit amet.</p>
+
+			<p><button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">Open modal</button></p>
+			<p><button class="btn btn-secondary w-100" data-bs-toggle="modal" data-bs-target="#exampleModalSafeArea">Open modal (with safe area)</button></p>
+
+			<p class="text-muted">Ut in enim a velit ultricies tristique at in tortor. In justo metus, molestie non lectus vel, congue ultricies mi. Nam posuere sem nec tortor bibendum condimentum. Ut quis est dapibus, ornare leo sit amet, pellentesque ex. Maecenas congue nibh quis lorem blandit, quis bibendum libero maximus. Etiam augue libero, commodo et consectetur et, venenatis id erat. Nulla faucibus, nisl at commodo hendrerit, sapien enim bibendum orci, sit amet accumsan quam risus nec mauris. In nec nunc justo. In vehicula, ante mattis viverra facilisis, eros quam tempus urna, sit amet consequat risus lectus a massa.</p>
+
+			<p class="text-muted">Aenean gravida quam vel magna ultrices, vitae aliquet tellus imperdiet. Suspendisse quis blandit justo, eu eleifend quam. Aliquam ut nisl vehicula, malesuada ligula eget, vehicula quam. Mauris augue justo, laoreet ac sollicitudin id, lacinia vel lorem. Curabitur sed viverra libero. Pellentesque at pharetra dolor, ut sodales diam. Fusce nibh libero, tempor vitae lectus a, pretium condimentum est. Donec lobortis in urna ut volutpat. Donec sollicitudin pharetra justo, quis iaculis nunc porta id. Nullam sed elit metus. Duis in erat placerat, lacinia enim vitae, gravida dui. Proin gravida mauris arcu, eget convallis leo vestibulum non. Maecenas aliquam lorem eget felis ornare, eu consectetur eros volutpat. Aliquam eget nulla dictum leo iaculis ullamcorper.</p>
+
+			<p class="text-muted">Aliquam eget convallis orci. Phasellus ac ante in neque consequat malesuada ut ac odio. Aenean tempor nisi ipsum, ut laoreet urna pellentesque id. Duis commodo, felis a vehicula suscipit, nisi tortor condimentum tellus, a feugiat sapien tortor non augue. Sed eu pretium lectus. Aliquam venenatis odio et quam condimentum, quis suscipit enim blandit. Fusce libero metus, sagittis ac vulputate id, blandit at mauris. Aliquam erat volutpat. Fusce ac auctor augue. Nullam pretium arcu ac laoreet pulvinar. Aenean placerat nulla et est scelerisque ultricies. </p>
+
+		</div>
+	</div>
+
+	<div class="modal fade" id="exampleModal" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+
+					 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dapibus varius ultrices. Nullam dictum vel nulla nec fringilla. Praesent quis sapien ut sem pellentesque interdum ut malesuada lorem. Aliquam tincidunt, turpis sed rhoncus elementum, erat justo facilisis enim, sed mattis diam lacus non orci. Nullam a pharetra urna, tristique sagittis enim. In auctor cursus fringilla. Nam congue odio id mi auctor tempor. Vestibulum congue massa et justo placerat ornare. Mauris suscipit magna at sem condimentum malesuada. Aenean ac lacus finibus, porttitor lectus sit amet, tristique nunc. Quisque quis convallis elit. Curabitur a dignissim magna. Donec eget mi a mauris posuere ultrices.</p>
+
+					<p>Cras varius vestibulum elit vitae pulvinar. Nam ultrices rutrum nunc eu placerat. Phasellus eleifend dignissim euismod. Aenean enim sem, pharetra a vehicula non, vulputate eget turpis. Nullam tellus ligula, hendrerit at rutrum quis, malesuada quis purus. Pellentesque sed egestas quam, sit amet viverra massa. Praesent pharetra condimentum vehicula. Nullam non maximus velit. Curabitur a purus enim. Pellentesque sit amet faucibus lorem. Aliquam faucibus, diam ac pretium lacinia, lectus dui suscipit risus, sed maximus mi ante eleifend lectus.</p>
+
+					<p>Pellentesque consequat sem nec nulla efficitur, vel efficitur lorem elementum. Integer non metus purus. Proin dapibus vitae ante sit amet pulvinar. Nullam auctor ipsum non felis convallis, non lacinia felis tempor. Suspendisse semper dolor purus, non pulvinar lacus varius nec. Maecenas auctor dolor a libero condimentum convallis. Pellentesque hendrerit quam ac magna ornare condimentum non non tellus. Morbi tristique mollis nisi, non mattis eros pharetra varius. Nam iaculis dui sapien, at pretium mauris elementum id. Pellentesque a leo purus.</p>
+
+					<p>Maecenas ac vehicula diam. Ut finibus sem nec rhoncus posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer molestie justo sit amet varius finibus. Nulla blandit rhoncus metus sed finibus. Fusce commodo sollicitudin est, eu luctus nunc sollicitudin id. Vestibulum vulputate finibus leo a scelerisque. Pellentesque sit amet magna gravida ante elementum euismod auctor sit amet nunc. Ut in sapien suscipit, rhoncus lectus vel, consequat lorem. Proin eleifend nibh nulla, quis vestibulum lorem porttitor non. Vestibulum luctus urna nec felis placerat tristique. Vestibulum fermentum nunc dictum purus dictum, sed viverra neque pretium. Nunc in aliquet arcu, nec consequat mi. Aenean elit magna, interdum in fringilla a, posuere sit amet dolor. Suspendisse sapien tellus, feugiat eget congue nec, auctor sit amet urna. Mauris nec lorem metus. </p>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade with-safe-area" id="exampleModalSafeArea" tabindex="-1">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-body">
+
+					 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas dapibus varius ultrices. Nullam dictum vel nulla nec fringilla. Praesent quis sapien ut sem pellentesque interdum ut malesuada lorem. Aliquam tincidunt, turpis sed rhoncus elementum, erat justo facilisis enim, sed mattis diam lacus non orci. Nullam a pharetra urna, tristique sagittis enim. In auctor cursus fringilla. Nam congue odio id mi auctor tempor. Vestibulum congue massa et justo placerat ornare. Mauris suscipit magna at sem condimentum malesuada. Aenean ac lacus finibus, porttitor lectus sit amet, tristique nunc. Quisque quis convallis elit. Curabitur a dignissim magna. Donec eget mi a mauris posuere ultrices.</p>
+
+					<p>Cras varius vestibulum elit vitae pulvinar. Nam ultrices rutrum nunc eu placerat. Phasellus eleifend dignissim euismod. Aenean enim sem, pharetra a vehicula non, vulputate eget turpis. Nullam tellus ligula, hendrerit at rutrum quis, malesuada quis purus. Pellentesque sed egestas quam, sit amet viverra massa. Praesent pharetra condimentum vehicula. Nullam non maximus velit. Curabitur a purus enim. Pellentesque sit amet faucibus lorem. Aliquam faucibus, diam ac pretium lacinia, lectus dui suscipit risus, sed maximus mi ante eleifend lectus.</p>
+
+					<p>Pellentesque consequat sem nec nulla efficitur, vel efficitur lorem elementum. Integer non metus purus. Proin dapibus vitae ante sit amet pulvinar. Nullam auctor ipsum non felis convallis, non lacinia felis tempor. Suspendisse semper dolor purus, non pulvinar lacus varius nec. Maecenas auctor dolor a libero condimentum convallis. Pellentesque hendrerit quam ac magna ornare condimentum non non tellus. Morbi tristique mollis nisi, non mattis eros pharetra varius. Nam iaculis dui sapien, at pretium mauris elementum id. Pellentesque a leo purus.</p>
+
+					<p>Maecenas ac vehicula diam. Ut finibus sem nec rhoncus posuere. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Integer molestie justo sit amet varius finibus. Nulla blandit rhoncus metus sed finibus. Fusce commodo sollicitudin est, eu luctus nunc sollicitudin id. Vestibulum vulputate finibus leo a scelerisque. Pellentesque sit amet magna gravida ante elementum euismod auctor sit amet nunc. Ut in sapien suscipit, rhoncus lectus vel, consequat lorem. Proin eleifend nibh nulla, quis vestibulum lorem porttitor non. Vestibulum luctus urna nec felis placerat tristique. Vestibulum fermentum nunc dictum purus dictum, sed viverra neque pretium. Nunc in aliquet arcu, nec consequat mi. Aenean elit magna, interdum in fringilla a, posuere sit amet dolor. Suspendisse sapien tellus, feugiat eget congue nec, auctor sit amet urna. Mauris nec lorem metus. </p>
+					
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
